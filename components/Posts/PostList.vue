@@ -1,24 +1,14 @@
 <template>
   <section class="post-list">
-      <PostPreview 
-        id="1"
-        :is-admin="isAdmin"
-        thumbnail="http://4.bp.blogspot.com/-kBsKTbWxCRQ/T9TRVCRGqoI/AAAAAAAAKRQ/ESK-JCzJiWM/s1600/[wallcoo_com]_3528_future_TECH_Image.jpg"
-        title="Hello there!"
-        previewText="This my first post!" />
-      <PostPreview 
-        id="2"
-        :is-admin="isAdmin"
-        thumbnail="http://4.bp.blogspot.com/-kBsKTbWxCRQ/T9TRVCRGqoI/AAAAAAAAKRQ/ESK-JCzJiWM/s1600/[wallcoo_com]_3528_future_TECH_Image.jpg"
-        title="Hello there - the second time!"
-        previewText="This my second post!" />
-      <PostPreview 
-        id="3"
-        :is-admin="isAdmin"
-        thumbnail="http://4.bp.blogspot.com/-kBsKTbWxCRQ/T9TRVCRGqoI/AAAAAAAAKRQ/ESK-JCzJiWM/s1600/[wallcoo_com]_3528_future_TECH_Image.jpg"
-        title="Hello there - the third time!"
-        previewText="This my third post!" />
-    </section>
+    <PostPreview 
+      v-for="post in posts"
+      :key="post.id"
+      :id="post.id"
+      :is-admin="isAdmin"
+      :thumbnail="post.thumbnail"
+      :title="post.title"
+      :previewText="post.previewText" />
+  </section>
 </template>
 
 <script>
@@ -32,6 +22,10 @@ export default {
     isAdmin: {
       type: Boolean,
       default: false
+    },
+    posts: {
+      type: Array,
+      required: true
     }
   }
 }
